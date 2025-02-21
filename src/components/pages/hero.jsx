@@ -3,16 +3,18 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link, useNavigate } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Scholarships', href: '#' },
-  { name: 'How It Works', href: '#' },
-  { name: 'Impact Stories', href: '#' },
-  { name: 'About Us', href: '#' },
+  { name: 'Scholarships', href: '/form' },
+  { name: 'How It Works', href: '/works' },
+  { name: 'Impact Stories', href: '/impact' },
+  { name: 'About Us', href: '/about' },
 ]
 
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <div className="bg-white">
@@ -46,9 +48,9 @@ export default function HeroSection() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
+            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -115,7 +117,7 @@ export default function HeroSection() {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Announcing our next round of funding.{' '}
+              Announcing the Next Phase of EduGrant.{' '}
               <a href="#" className="font-semibold text-indigo-600">
                 <span aria-hidden="true" className="absolute inset-0" />
                 Read more <span aria-hidden="true">&rarr;</span>
@@ -130,15 +132,18 @@ export default function HeroSection() {
               EduGrant is dedicated to eliminating corruption and favoritism in scholarship distribution. Our blockchain-based platform ensures that every eligible student receives their funds promptly and transparently.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <button
+                onClick={() => navigate('/form')}
                 className="rounded-md bg-[#151BEA] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-[#151BEA]/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#151BEA]"
               >
-                Get started
-              </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                Application Form
+              </button>
+              <button
+                onClick={() => navigate('/about')}
+                className="text-sm/6 font-semibold text-gray-900"
+              >
                 Learn more <span aria-hidden="true">→</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
